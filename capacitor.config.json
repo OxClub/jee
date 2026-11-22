@@ -1,6 +1,6 @@
 {
-  "appId": "com.wyrix.jeeprep",
-  "appName": "JEE MAINS TEST PREPARATION",
+  "appId": "com.wyrix.etest",
+  "appName": "JEE MAIN EXAM TEST",
   "webDir": "www",
   "server": {
     "androidScheme": "https"

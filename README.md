@@ -1,4 +1,4 @@
-# JEE MAINS TEST PREPARATION (Android app)
+# JEE MAIN EXAM TEST (Android app)
 
 An Android app (Capacitor) with 10,000 practice questions per subject (Physics, Chemistry, Maths),
 timed tests, instant solutions, study music, dark/light mode, and 30 solution PDFs that open inside the app.
@@ -15,7 +15,7 @@ timed tests, instant solutions, study music, dark/light mode, and 30 solution PD
   Run `npm install && npm run prepare:web && npx cap add android && npx cap sync android && npx cap open android`
   on a computer with Android Studio, then use **Build > Generate Signed Bundle / APK**.
 - The app icon comes from `assets/icon-foreground.png` and `assets/icon-background.png` (blue background, white JEE MAINS text). Replace those two files to change it.
-- Add a privacy policy and fill in Play Console's data safety form.
+- A privacy policy page is included as `privacy.html`. Put your email in it, turn on GitHub Pages (Settings > Pages > Deploy from a branch > main > / (root)), and paste the page URL into Play Console. Then fill in the Data safety form (no data collected, none shared).
 - Keep the "not affiliated with NTA or any IIT" note.
 
 ## Saving PDFs
