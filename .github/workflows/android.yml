@@ -30,6 +30,20 @@ jobs:
       - name: Copy PDF viewer into the app
         run: npm run prepare:web
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate questions and solution PDFs
+        run: |
+          pip install reportlab
+          sudo apt-get install -y fonts-dejavu-core
+          rm -rf www/data www/pdfs
+          mkdir -p www/data www/pdfs
+          node tools/gen_all.js
+          python3 tools/make_pdfs.py
+          ls www/pdfs | wc -l
+
       - name: Create the Android project and icons
         run: |
           npx cap add android

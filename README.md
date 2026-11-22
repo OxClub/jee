@@ -22,8 +22,9 @@ timed tests, instant solutions, study music, dark/light mode, and 30 solution PD
 In the PDF viewer, **Save / Share PDF to phone** opens Android's share sheet. Choose Files, Drive, WhatsApp or any PDF reader to keep a copy.
 
 ## Regenerate the content
-- `node tools/gen.js` rebuilds `www/data/*.json` (10,000 unique questions per subject).
-- `python3 tools/make_pdfs.py` rebuilds `www/pdfs/*.pdf` (needs `pip install reportlab` and the DejaVu fonts).
+- `node tools/gen_all.js` builds `www/data/*.json` for JEE Main, JEE Advanced, NEET and UPSC (10,000 questions per subject, plus a 63-question GS set).
+- `python3 tools/make_pdfs.py` builds `www/pdfs/*.pdf` (needs `pip install reportlab` and the DejaVu fonts).
+- GitHub Actions runs both steps on every build, so the data and PDFs are not stored in the repository.
 
 ## Test the web version locally
 `npm install && npm run prepare:web && npx serve www`

@@ -71,7 +71,7 @@ const o=shuf(r,[a,...d]).map(fmt);return[q,o,o.indexOf(fmt(a)),e,ti]}
 function build(subj){const per=G[subj].map((_,ti)=>{const seen=new Set(),out=[];for(let s=0;s<CAP*40&&out.length<CAP;s++){const x=make(subj,ti,s);if(!seen.has(x[0])){seen.add(x[0]);out.push(x)}}return out});
 const seenAll=new Set(),pick=[];for(let i=0;pick.length<N;i++){let any=false;for(const l of per){if(i<l.length){any=true;if(pick.length<N&&!seenAll.has(l[i][0])){seenAll.add(l[i][0]);pick.push(l[i])}}}if(!any)break}
 pick.sort((a,b)=>a[4]-b[4]);return pick}
-module.exports={build,G};
+module.exports={build,G,R,P,fmt,sup,shuf,rng,TRI,nCr,ord,CMP};
 if(require.main===module){const dir=path.join(__dirname,"..","www","data");fs.mkdirSync(dir,{recursive:true});
 for(const s of Object.keys(G)){const b=build(s),bad=b.filter(x=>/NaN|undefined|Infinity/.test(x[0]+x[1]+x[3])||new Set(x[1]).size!==4||x[2]<0).length;
 fs.writeFileSync(path.join(dir,s.toLowerCase()+".json"),JSON.stringify({topics:G[s].map(t=>t[0]),q:b}));console.log(s,b.length,"bad",bad)}}

@@ -26,9 +26,9 @@ out_dir = os.path.join("www", "pdfs")
 os.makedirs(out_dir, exist_ok=True)
 manifest = {}
 
-def one(subject, vol, data, start):
-    name = f"{subject.lower()}-vol{vol:02d}.pdf"
-    label = f"{subject} · Questions {start+1}–{start+len(data['q'])}"
+def one(ename, subject, slug, vol, data, start):
+    name = f"{slug}-vol{vol:02d}.pdf"
+    label = f"{ename} · {subject} · Questions {start+1}–{start+len(data['q'])}"
     def deco(c, d):
         c.saveState(); c.setFont("DV", 7.5); c.setFillColor(colors.HexColor("#666666"))
         c.drawString(12*mm, 8*mm, "JEE Prep Studio · " + label)
@@ -49,12 +49,14 @@ def one(subject, vol, data, start):
     doc.build(st)
     return name, label
 
-for subject in ["Physics", "Chemistry", "Maths"]:
-    data = json.load(open(os.path.join("www", "data", subject.lower() + ".json"), encoding="utf-8"))
-    qa = data["q"]; vols = []
-    for v in range(0, len(qa), PER):
-        part = {"topics": data["topics"], "q": qa[v:v+PER]}
-        name, label = one(subject, v//PER + 1, part, v)
-        vols.append({"file": name, "label": label}); print(name, flush=True)
-    manifest[subject] = vols
+for ex in json.load(open(os.path.join("www", "data", "exams.json"), encoding="utf-8")):
+    manifest[ex["id"]] = {}
+    for sub in ex["subs"]:
+        data = json.load(open(os.path.join("www", "data", sub["file"]), encoding="utf-8"))
+        qa = data["q"]; vols = []; slug = sub["file"].replace(".json", "").replace("_", "-")
+        for v in range(0, len(qa), PER):
+            part = {"topics": data["topics"], "q": qa[v:v+PER]}
+            name, label = one(ex["name"], sub["name"], slug, v//PER + 1, part, v)
+            vols.append({"file": name, "label": label}); print(name, flush=True)
+        manifest[ex["id"]][sub["name"]] = vols
 json.dump(manifest, open(os.path.join("www", "pdfs", "manifest.json"), "w", encoding="utf-8"), ensure_ascii=False)
