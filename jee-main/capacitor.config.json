@@ -1,0 +1,13 @@
+{
+  "appId": "com.wyrix.etest",
+  "appName": "JEE MAIN EXAM TEST",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css"
+    }
+  }
+}

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="theme-color" content="#0a1b45"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JEE MAIN EXAM TEST</title>
+<style>
+:root{--b1:#eaf2ff;--b2:#cfe0ff;--card:rgba(255,255,255,.8);--tx:#0c2150;--mu:#4a64a0;--ac:#1f6bff;--ok:#0a9f6a;--bad:#d9364b;--ln:rgba(12,33,80,.14);box-sizing:border-box;padding-top:var(--safe-area-inset-top,env(safe-area-inset-top,0px));padding-bottom:var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--b1:#0a1b45;--b2:#12306f;--card:rgba(255,255,255,.08);--tx:#eaf1ff;--mu:#9db4e6;--ac:#5aa2ff;--ok:#38d996;--bad:#ff6b7a;--ln:rgba(255,255,255,.14)}}
+:root[data-theme="dark"]{--b1:#0a1b45;--b2:#12306f;--card:rgba(255,255,255,.08);--tx:#eaf1ff;--mu:#9db4e6;--ac:#5aa2ff;--ok:#38d996;--bad:#ff6b7a;--ln:rgba(255,255,255,.14)}
+*{box-sizing:border-box}html{scroll-padding-top:var(--safe-area-inset-top,env(safe-area-inset-top,0px))}
+body{margin:0;min-height:100vh;background:linear-gradient(160deg,var(--b1),var(--b2)) fixed;color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:92px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:var(--safe-area-inset-top,env(safe-area-inset-top,0px));background:var(--b1);z-index:10}
+header{position:sticky;top:var(--safe-area-inset-top,env(safe-area-inset-top,0px));z-index:9;display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--b1);border-bottom:1px solid var(--ln)}
+header .lg{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#1f6bff,#5ac8ff);display:grid;place-items:center;color:#fff;font:700 18px Georgia,serif}
+header b{font-size:17px;line-height:1.1}header small{display:block;color:var(--mu);font-size:12px}header .sp{flex:1}
+.ib{background:transparent;border:1px solid var(--ln);border-radius:12px;width:40px;height:40px;display:grid;place-items:center;color:var(--tx)}
+main{max-width:640px;margin:0 auto;padding:18px 16px}
+h1{font:700 26px/1.15 Georgia,"Times New Roman",serif;margin:0 0 6px}h3{font-size:16px;margin:22px 0 8px}
+.mu{color:var(--mu);font-size:14px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:16px;margin:10px 0}
+.hero{border-radius:20px;padding:22px 18px;margin:0 0 14px;color:#fff;background:linear-gradient(135deg,#1f6bff,#0e3fb3 60%,#0a2a7a)}
+.hero h2{font:700 25px/1.2 Georgia,serif;margin:0 0 6px}.hero p{margin:0 0 16px;opacity:.85}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:12px;padding:13px 16px;font-weight:600;min-height:48px}
+.btn.w{width:100%}.hero .btn{background:#fff;color:#0a2a7a}.hero .btn.g{background:rgba(255,255,255,.16);color:#fff}
+.btn.g{background:transparent;color:var(--tx);border:1px solid var(--ln)}.btn:disabled{opacity:.4}
+.chip{border:1px solid var(--ln);background:transparent;border-radius:999px;padding:8px 14px;min-height:40px}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.sub{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--ln);background:var(--card);border-radius:16px;padding:12px 14px;width:100%;min-height:64px;margin:8px 0}
+.sub i{font:700 15px Georgia,serif;font-style:normal;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#06142f}
+.sub b{display:block}.sub span{color:var(--mu);font-size:13px}
+.stat{text-align:center;padding:12px 6px}.stat b{display:block;font:700 22px Georgia,serif}
+.q{font:19px/1.55 Georgia,"Times New Roman",serif;margin:8px 0 14px}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--ln);background:transparent;border-radius:12px;padding:13px 14px;margin:8px 0;min-height:48px}
+.opt.on{border-color:var(--ac);background:rgba(90,162,255,.22);font-weight:600}
+.opt.ok{border-color:var(--ok);background:rgba(56,217,150,.2)}.opt.no{border-color:var(--bad);background:rgba(255,107,122,.2)}
+.sol{border-left:4px solid var(--ok)}
+.bar{height:6px;background:var(--ln);border-radius:9px;overflow:hidden;margin-bottom:10px}.bar i{display:block;height:100%;background:var(--ac)}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:2px;padding:6px 8px calc(6px + var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px)));background:var(--b1);border-top:1px solid var(--ln);z-index:5}
+nav button{flex:1;max-width:120px;background:transparent;border:0;border-radius:12px;padding:6px 2px;color:var(--mu);font-size:11.5px;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button.on{color:var(--ac);background:var(--card)}
+details{border-top:1px solid var(--ln);padding:10px 0}summary{cursor:pointer}
+input[type=range]{width:100%;accent-color:var(--ac)}
+.big{font:700 44px Georgia,serif}
+#toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--tx);color:var(--b1);padding:10px 16px;border-radius:12px;opacity:0;transition:.25s;z-index:20;font-size:14px;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){#toast{transition:none}}
+select.sel{width:100%;border:1px solid var(--ln);border-radius:12px;background:var(--card);color:var(--tx);padding:0 12px;font:inherit;min-height:46px}</style></head><body>
+<header><div class="lg">Σ</div><div><b style="font-size:14px;letter-spacing:.3px">JEE MAIN EXAM TEST</b><small>Practice. Test. Revise.</small></div><div class="sp"></div><button class="ib" aria-label="Toggle theme" onclick="setTheme(S.theme==='dark'?'light':'dark')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg></button></header>
+<main id="app"></main><div id="toast"></div>
+<nav>
+<button data-v="home" onclick="go('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Home</button>
+<button data-v="prac" onclick="go('prac')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 19a2 2 0 012-2h13"/></svg>Practice</button>
+<button data-v="test" onclick="go('test')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>Test</button>
+<button data-v="lib" onclick="go('lib')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>PDFs</button>
+<button data-v="set" onclick="go('set')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Settings</button>
+</nav>
+<script src="lib/pdf.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const f2=n=>String(+Number(n).toFixed(2)),AB="ABCD",COL=["#5aa2ff","#2fcf93","#ffb84d","#ff7ab6"];
+const NOTE={jeemain:"Practice questions built from templates, not official papers.",jeeadv:"Advanced-style multi-step practice. It is not official paper material and is easier than the real exam.",neet:"Physics and Chemistry are calculation-based. Biology covers formula and numerical topics (genetics, physiology, ecology), not full NCERT theory.",upsc:"CSAT has 10,000 aptitude questions. GS (curated) is a small set of 63 facts; verify them with standard textbooks. Prelims GS is mostly facts, so this is not a full GS question bank."};
+let EXAMS=[],MAN={},EX=null,SUBS=[],INFO={},TOPICS={},POOL={},TOTAL=0,READY=false,ERR=false;
+const S={v:"home",theme:"dark",vol:.5,music:false,exam:null,st:{n:0,ok:0,att:0,best:0},sel:{sub:"All",topic:"All",n:20},t:null,p:null,pdf:null};
+try{const x=JSON.parse(localStorage.getItem("jeeps")||"{}");if(x.theme)S.theme=x.theme;if(x.vol!=null)S.vol=x.vol;if(x.exam)S.exam=x.exam;if(x.st)Object.assign(S.st,x.st)}catch(e){}
+function save(){try{localStorage.setItem("jeeps",JSON.stringify({theme:S.theme,vol:S.vol,exam:S.exam,st:S.st}))}catch(e){}}
+async function boot(){ERR=false;try{const rs=await Promise.all([fetch("data/exams.json").then(r=>r.json()),fetch("pdfs/manifest.json").then(r=>r.json())]);EXAMS=rs[0];MAN=rs[1]}catch(e){ERR=true;render();return}
+if(S.exam&&EXAMS.some(x=>x.id===S.exam))loadExam(S.exam);else{S.exam=null;S.v="pick";READY=true;render()}}
+async function loadExam(id){S.exam=id;save();READY=false;ERR=false;render();EX=EXAMS.find(x=>x.id===id);
+try{const rs=await Promise.all(EX.subs.map(s=>fetch("data/"+s.file).then(r=>r.json())));POOL={};TOPICS={};INFO={};TOTAL=0;SUBS=EX.subs.map(s=>s.name);
+EX.subs.forEach((s,i)=>{const d=rs[i];INFO[s.name]={plus:s.plus,minus:s.minus};TOPICS[s.name]=d.topics.filter((t,j,a)=>a.indexOf(t)===j).sort();POOL[s.name]=d.q.map(x=>({q:x[0],o:x[1],a:x[1][x[2]],e:x[3],s:s.name,t:d.topics[x[4]]}));TOTAL+=POOL[s.name].length});
+S.sel={sub:"All",topic:"All",n:20};S.p=null;S.t=null;S.v="home";READY=true}catch(e){ERR=true}render()}
+const poolOf=(s,t)=>{let a=s==="All"?[].concat(...SUBS.map(k=>POOL[k])):POOL[s];if(s!=="All"&&t&&t!=="All")a=a.filter(q=>q.t===t);return a},letter=q=>AB[q.o.indexOf(q.a)];
+let ac,master,nodes=[],timer=null;
+function music(on){if(on){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();ac.resume();master=ac.createGain();master.gain.value=S.vol*.6;const f=ac.createBiquadFilter();f.type="lowpass";f.frequency.value=900;f.connect(ac.destination);master.connect(f);
+[110,164.81,196,261.63,329.63].forEach((hz,i)=>{const o=ac.createOscillator(),g=ac.createGain(),l=ac.createOscillator(),lg=ac.createGain();o.type="sine";o.frequency.value=hz;g.gain.value=.12;l.frequency.value=.05+i*.03;lg.gain.value=.08;l.connect(lg);lg.connect(g.gain);o.connect(g);g.connect(master);o.start();l.start();nodes.push(o,l)});S.music=true}catch(e){S.music=false}}
+else{nodes.forEach(n=>{try{n.stop()}catch(e){}});nodes=[];if(master)master.disconnect();S.music=false}}
+function go(v){S.v=v;render()}
+function pick(k,v){S.sel[k]=v;if(k==="sub")S.sel.topic="All";render()}
+function toast(m){const e=$("#toast");if(!e)return;e.textContent=m;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2600)}
+function startP(sub,topic){const qs=shuf(poolOf(sub,topic)).slice(0,300);if(!qs.length){toast("No questions for this choice.");return}S.p={qs,i:0,pick:null,n:0,ok:0};go("prac")}
+function choose(k){const p=S.p;if(p.pick!=null)return;p.pick=k;p.n++;S.st.att++;if(p.qs[p.i].o[k]===p.qs[p.i].a){p.ok++;S.st.ok++}save();render()}
+function nextP(){S.p.i++;S.p.pick=null;render()}
+function start(sub,n,topic){const qs=shuf(poolOf(sub,topic)).slice(0,n);if(!qs.length){toast("No questions for this choice.");return}S.t={qs,i:0,ans:{},left:qs.length*EX.sec,done:false};clearInterval(timer);timer=setInterval(()=>{if(!S.t||S.t.done)return clearInterval(timer);S.t.left--;const e=$("#tm");if(e)e.textContent=clk(S.t.left);if(S.t.left<=0)finish()},1000);go("test")}
+const clk=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+function ans(k){S.t.ans[S.t.i]=k;render()}
+function mv(d){S.t.i+=d;render()}
+function finish(){const t=S.t;if(t.done)return;t.done=true;clearInterval(timer);let ok=0,wr=0,sc=0,mx=0;t.qs.forEach((q,i)=>{const f=INFO[q.s];mx+=f.plus;if(t.ans[i]!=null){if(q.o[t.ans[i]]===q.a){ok++;sc+=f.plus}else{wr++;sc-=f.minus}}});t.ok=ok;t.wr=wr;t.sc=sc;t.mx=mx;S.st.n++;S.st.ok+=ok;S.st.att+=ok+wr;S.st.best=Math.max(S.st.best,sc);save();render()}
+function setTheme(t){S.theme=t;save();document.documentElement.dataset.theme=t;if(S.v!=="pdf")render()}
+function vol(v){S.vol=v/100;if(master)master.gain.value=S.vol*.6;save()}
+function reset(){if(confirm("Reset all progress?")){S.st={n:0,ok:0,att:0,best:0};save();render()}}
+let doc=null,busy=false,again=false;
+async function openPdf(f,t){if(typeof pdfjsLib==="undefined"){toast("PDF viewer is not installed in this build.");return}
+S.pdf={f,t,pg:1,n:0,z:1};go("pdf");try{pdfjsLib.GlobalWorkerOptions.workerSrc="lib/pdf.worker.min.js";doc=await pdfjsLib.getDocument(f).promise;S.pdf.n=doc.numPages;const l=$("#pl");if(l)l.remove();draw()}catch(e){toast("Could not open this PDF.")}}
+async function draw(){if(!doc||S.v!=="pdf")return;if(busy){again=true;return}busy=true;try{const p=S.pdf,page=await doc.getPage(p.pg),c=$("#pc"),w=$("#pw").clientWidth-12,v0=page.getViewport({scale:1}),dpr=window.devicePixelRatio||1,v=page.getViewport({scale:w/v0.width*p.z*dpr});
+c.width=v.width;c.height=v.height;c.style.width=v.width/dpr+"px";await page.render({canvasContext:c.getContext("2d"),viewport:v}).promise;const n=$("#pn");if(n)n.textContent=p.pg+" / "+p.n}catch(e){}busy=false;if(again){again=false;draw()}}
+function pgGo(d){const p=S.pdf;p.pg=Math.min(p.n,Math.max(1,p.pg+d));draw();const w=$("#pw");if(w)w.scrollTop=0}
+function zoom(d){S.pdf.z=Math.min(3,Math.max(.6,S.pdf.z+d));draw()}
+function jump(){const v=+$("#pj").value;if(v>=1&&v<=S.pdf.n){S.pdf.pg=v;draw()}else toast("Enter a page from 1 to "+S.pdf.n)}
+async function dlPdf(f,t){const C=window.Capacitor&&window.Capacitor.Plugins;if(!C||!C.Filesystem||!C.Share){toast("Saving works in the installed Android app.");return}
+try{toast("Preparing PDF…");const u=new Uint8Array(await (await fetch(f)).arrayBuffer());let bin="";for(let i=0;i<u.length;i+=32768)bin+=String.fromCharCode.apply(null,u.subarray(i,i+32768));
+const w=await C.Filesystem.writeFile({path:f.split("/").pop(),data:btoa(bin),directory:"CACHE"});await C.Share.share({title:t,url:w.uri,dialogTitle:"Save or share this PDF"})}catch(e){toast("Could not save the PDF.")}}
+function closePdf(){doc=null;S.pdf=null;go("lib")}
+const chips=(k,a)=>a.map(x=>`<button class="chip ${S.sel[k]===x?"on":""}" onclick="pick('${k}',${typeof x==="number"?x:"'"+x+"'"})">${x}</button>`).join(" ");
+const topicSel=()=>S.sel.sub==="All"?"":`<b>Chapter / topic</b><div style="margin:10px 0 14px"><select class="sel" onchange="pick('topic',this.value)">${["All",...(TOPICS[S.sel.sub]||[])].map(t=>`<option value="${t}" ${S.sel.topic===t?"selected":""}>${t==="All"?"All topics":t}</option>`).join("")}</select></div>`;
+const marks=()=>{const u=[...new Set(SUBS.map(s=>"+"+INFO[s].plus+" / −"+INFO[s].minus))];return u.length>1?SUBS.map(s=>s+": +"+INFO[s].plus+" / −"+INFO[s].minus).join(", "):u[0]};
+function pickv(){return`<h1>Which exam are you preparing for?</h1><p class="mu">Aap kis exam ki tayari kar rahe ho? Choose one and you will only see that exam’s content. You can change it anytime from Home or Settings.</p>`+EXAMS.map((e,i)=>`<button class="sub" onclick="loadExam('${e.id}')"><i style="background:${COL[i%4]}">${e.name.split(" ").map(w=>w[0]).join("").slice(0,3)}</i><div><b>${e.name}</b><span>${e.tag} · ${e.subs.reduce((a,s)=>a+s.count,0).toLocaleString()} questions</span></div></button>`).join("")+`<p class="mu">Practice material generated from templates. It is not official paper material and the app is not affiliated with NTA, the IITs or UPSC.</p>`}
+function home(){const a=S.st.att?Math.round(100*S.st.ok/S.st.att)+"%":"–",vols=Object.values(MAN[S.exam]||{}).reduce((x,y)=>x+y.length,0);
+return`<section class="hero"><p style="margin:0 0 2px;opacity:.8">Preparing for</p><h2>${EX.name}</h2><p>${TOTAL.toLocaleString()} questions with step-by-step solutions.</p><div class="row"><button class="btn" onclick="startP('All','All')">Start practice</button><button class="btn g" onclick="start('All',30,'All')">30-question mock</button></div><button class="chip" style="margin-top:12px;background:rgba(255,255,255,.16);color:#fff;border-color:transparent" onclick="go('pick')">Change exam</button></section>
+<div class="row"><div class="card stat"><b>${TOTAL.toLocaleString()}</b><span class="mu">questions</span></div><div class="card stat"><b>${S.st.n}</b><span class="mu">tests</span></div><div class="card stat"><b>${a}</b><span class="mu">accuracy</span></div></div>
+<h3>Practice by subject</h3>${SUBS.map((s,i)=>`<button class="sub" onclick="S.sel.sub='${s}';S.sel.topic='All';go('prac')"><i style="background:${COL[i%4]}">${s.slice(0,2)}</i><div><b>${s}</b><span>${POOL[s].length.toLocaleString()} questions · choose chapters</span></div></button>`).join("")}
+<h3>Study offline</h3><button class="sub" onclick="go('lib')"><i style="background:#cfe0ff">PDF</i><div><b>Solution PDFs</b><span>${vols} volumes for ${EX.name}, readable inside the app</span></div></button>
+<p class="mu">${NOTE[S.exam]||""} Marking in tests: ${marks()}. Best test score: ${f2(S.st.best)}. The app is not affiliated with NTA, the IITs or UPSC.</p>`}
+function prac(){const p=S.p;
+if(!p)return`<h1>Practice</h1><p class="mu">Tap an option to see the answer and full solution straight away.</p><div class="card"><b>Subject</b><div class="row" style="margin:10px 0 14px">${chips("sub",["All",...SUBS])}</div>${topicSel()}<button class="btn w" onclick="startP(S.sel.sub,S.sel.topic)">Start practice</button></div>`;
+const q=p.qs[p.i];if(!q)return`<h1>Session complete</h1><p class="mu">You answered ${p.n} questions and got ${p.ok} right.</p><button class="btn w" onclick="S.p=null;render()">Back</button>`;const d=p.pick!=null;
+return`<div class="top"><span class="mu">${q.s} · ${q.t} · ${p.ok}/${p.n}</span><button class="chip" onclick="S.p=null;render()">End</button></div>
+<div class="card"><div class="q">${q.q}</div>${q.o.map((o,k)=>`<button class="opt ${d?(o===q.a?"ok":p.pick===k?"no":""):""}" onclick="choose(${k})">${AB[k]}. ${o}</button>`).join("")}</div>
+${d?`<div class="card sol"><b>${q.o[p.pick]===q.a?"Correct":"Not quite. The answer is "+letter(q)+". "+q.a}</b><p style="margin:8px 0 0"><b>Solution:</b> ${q.e}</p></div><button class="btn w" onclick="nextP()">Next question</button>`:""}`}
+function test(){const t=S.t;
+if(!t)return`<h1>Timed test: ${EX.name}</h1><p class="mu">About ${EX.sec} seconds per question. Marking: ${marks()}.</p><div class="card"><b>Subject</b><div class="row" style="margin:10px 0 14px">${chips("sub",["All",...SUBS])}</div>${topicSel()}<b>Questions</b><div class="row" style="margin:10px 0 14px">${chips("n",[10,20,30,50])}</div><button class="btn w" onclick="start(S.sel.sub,S.sel.n,S.sel.topic)">Start test</button></div>`;
+if(t.done)return`<h1>Result</h1><div class="card" style="text-align:center"><div class="big">${f2(t.sc)}</div><span class="mu">out of ${f2(t.mx)}</span><p>${t.ok} correct · ${t.wr} wrong · ${t.qs.length-t.ok-t.wr} skipped</p></div>
+<h3>Solutions</h3><div class="card">${t.qs.map((q,i)=>{const u=t.ans[i],c=u!=null&&q.o[u]===q.a;return`<details ${c?"":"open"}><summary>${c?"✅":u==null?"⚪":"❌"} Q${i+1}: ${q.q}</summary><p>Your answer: ${u==null?"skipped":q.o[u]}<br>Correct: <b>${letter(q)}. ${q.a}</b><br><span class="mu">Solution: ${q.e}</span></p></details>`}).join("")}</div>
+<button class="btn w" onclick="S.t=null;render()">New test</button>`;
+const q=t.qs[t.i],n=t.qs.length,last=t.i===n-1;
+return`<div class="top"><span class="mu">${q.s} · Q${t.i+1} of ${n}</span><b id="tm">${clk(t.left)}</b></div><div class="bar"><i style="width:${(t.i+1)/n*100}%"></i></div>
+<div class="card"><div class="q">${q.q}</div>${q.o.map((o,k)=>`<button class="opt ${t.ans[t.i]===k?"on":""}" onclick="ans(${k})">${AB[k]}. ${o}</button>`).join("")}</div>
+<div class="row"><button class="btn g" ${t.i?"":"disabled"} onclick="mv(-1)">Previous</button>${last?`<button class="btn" onclick="finish()">Submit</button>`:`<button class="btn" onclick="mv(1)">Next</button>`}</div>`}
+function lib(){const m=MAN[S.exam]||{};return`<h1>Solution PDFs: ${EX.name}</h1><p class="mu">Each volume has up to 1,000 questions with answers and full solutions. Open a volume to read it, then tap Save / Share PDF to keep a copy on your phone.</p>`+SUBS.map(s=>`<h3>${s}</h3><div class="row" style="gap:8px">${(m[s]||[]).map((v,i)=>`<button class="chip" style="flex:1 1 30%;min-height:54px;border-radius:14px" onclick="openPdf('pdfs/${v.file}','${v.label}')">Vol ${i+1}<br><small class="mu">${v.label.split("Questions ")[1]}</small></button>`).join("")}</div>`).join("")}
+function pdfv(){const p=S.pdf;return`<div class="top"><button class="chip" onclick="closePdf()">‹ Back</button><span class="mu" style="text-align:right">${p.t}</span></div>
+<div class="card" id="pw" style="padding:6px;overflow:auto;max-height:68vh;text-align:center"><canvas id="pc"></canvas><div id="pl" class="mu">Loading…</div></div>
+<div class="row"><button class="btn g" onclick="pgGo(-1)">Prev</button><button class="btn g" id="pn" style="flex:2" disabled>–</button><button class="btn g" onclick="pgGo(1)">Next</button></div>
+<div class="row" style="margin-top:8px"><button class="btn g" onclick="zoom(-.25)">Zoom out</button><button class="btn g" onclick="zoom(.25)">Zoom in</button></div>
+<button class="btn w" style="margin-top:8px" onclick="dlPdf(S.pdf.f,S.pdf.t)">Save / Share PDF to phone</button><div class="row" style="margin-top:8px"><input id="pj" type="number" min="1" placeholder="Page number" style="flex:2;border:1px solid var(--ln);border-radius:12px;background:transparent;color:var(--tx);padding:0 12px;font:inherit;min-height:46px"><button class="btn" onclick="jump()">Go to page</button></div>`}
+function set(){return`<h1>Settings</h1><div class="card"><b>Exam</b><p class="mu">Currently: ${EX.name}</p><button class="btn g" onclick="go('pick')">Change exam</button></div><div class="card"><b>Theme</b><div class="row" style="margin-top:10px"><button class="chip ${S.theme==="dark"?"on":""}" onclick="setTheme('dark')">Dark</button><button class="chip ${S.theme==="light"?"on":""}" onclick="setTheme('light')">Light</button></div></div>
+<div class="card"><b>Study music</b><p class="mu">Soft ambient tones made on your device.</p><button class="btn ${S.music?"":"g"} w" onclick="music(!S.music);render()">${S.music?"Music on · tap to stop":"Play study music"}</button><p class="mu" style="margin:12px 0 4px">Volume</p><input type="range" min="0" max="100" value="${Math.round(S.vol*100)}" oninput="vol(this.value)"></div>
+<div class="card"><b>Progress</b><p class="mu">Saved on this device only.</p><button class="btn g" onclick="reset()">Reset progress</button></div>`}
+function render(){document.documentElement.dataset.theme=S.theme;const app=$("#app"),nav=document.querySelector("nav");
+if(ERR){app.innerHTML=`<h1>Could not load</h1><p class="mu">Please check the app files and try again.</p><button class="btn w" onclick="boot()">Try again</button>`;return}
+if(!READY){app.innerHTML=`<h1>Loading…</h1><p class="mu">Preparing your questions.</p>`;return}
+if(nav)nav.style.display=S.v==="pick"?"none":"flex";
+const sm=document.querySelector("header small");if(sm)sm.textContent=EX&&S.v!=="pick"?EX.name:"Choose your exam";
+app.innerHTML={home,prac,test,lib,pdf:pdfv,set,pick:pickv}[S.v]();
+document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===(S.v==="pdf"?"lib":S.v)));
+try{const B=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.SystemBars;if(B)B.setStyle({style:S.theme==="dark"?"DARK":"LIGHT"})}catch(e){}
+window.scrollTo&&window.scrollTo(0,0);if(S.v==="pdf"&&doc){const l=$("#pl");if(l)l.remove();draw()}}
+try{const A=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;if(A)A.addListener("backButton",()=>{if(S.v==="pdf")closePdf();else if(S.v==="pick"&&EX)go("home");else if(S.v!=="home"&&S.v!=="pick")go("home");else A.exitApp()})}catch(e){}
+render();boot();
+</script></body></html>
