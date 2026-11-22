@@ -3,13 +3,13 @@
 <meta name="theme-color" content="#0a1b45"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>JEE MAINS TEST PREPARATION</title>
 <style>
-:root{--b1:#eaf2ff;--b2:#cfe0ff;--card:rgba(255,255,255,.8);--tx:#0c2150;--mu:#4a64a0;--ac:#1f6bff;--ok:#0a9f6a;--bad:#d9364b;--ln:rgba(12,33,80,.14);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--b1:#eaf2ff;--b2:#cfe0ff;--card:rgba(255,255,255,.8);--tx:#0c2150;--mu:#4a64a0;--ac:#1f6bff;--ok:#0a9f6a;--bad:#d9364b;--ln:rgba(12,33,80,.14);box-sizing:border-box;padding-top:var(--safe-area-inset-top,env(safe-area-inset-top,0px));padding-bottom:var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px))}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--b1:#0a1b45;--b2:#12306f;--card:rgba(255,255,255,.08);--tx:#eaf1ff;--mu:#9db4e6;--ac:#5aa2ff;--ok:#38d996;--bad:#ff6b7a;--ln:rgba(255,255,255,.14)}}
 :root[data-theme="dark"]{--b1:#0a1b45;--b2:#12306f;--card:rgba(255,255,255,.08);--tx:#eaf1ff;--mu:#9db4e6;--ac:#5aa2ff;--ok:#38d996;--bad:#ff6b7a;--ln:rgba(255,255,255,.14)}
-*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:var(--safe-area-inset-top,env(safe-area-inset-top,0px))}
 body{margin:0;min-height:100vh;background:linear-gradient(160deg,var(--b1),var(--b2)) fixed;color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:92px}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--b1);z-index:10}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--b1);border-bottom:1px solid var(--ln)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:var(--safe-area-inset-top,env(safe-area-inset-top,0px));background:var(--b1);z-index:10}
+header{position:sticky;top:var(--safe-area-inset-top,env(safe-area-inset-top,0px));z-index:9;display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--b1);border-bottom:1px solid var(--ln)}
 header .lg{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#1f6bff,#5ac8ff);display:grid;place-items:center;color:#fff;font:700 18px Georgia,serif}
 header b{font-size:17px;line-height:1.1}header small{display:block;color:var(--mu);font-size:12px}header .sp{flex:1}
 .ib{background:transparent;border:1px solid var(--ln);border-radius:12px;width:40px;height:40px;display:grid;place-items:center;color:var(--tx)}
@@ -37,7 +37,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .sol{border-left:4px solid var(--ok)}
 .bar{height:6px;background:var(--ln);border-radius:9px;overflow:hidden;margin-bottom:10px}.bar i{display:block;height:100%;background:var(--ac)}
 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
-nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:2px;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));background:var(--b1);border-top:1px solid var(--ln);z-index:5}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:2px;padding:6px 8px calc(6px + var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px)));background:var(--b1);border-top:1px solid var(--ln);z-index:5}
 nav button{flex:1;max-width:120px;background:transparent;border:0;border-radius:12px;padding:6px 2px;color:var(--mu);font-size:11.5px;display:flex;flex-direction:column;align-items:center;gap:2px}
 nav button.on{color:var(--ac);background:var(--card)}
 details{border-top:1px solid var(--ln);padding:10px 0}summary{cursor:pointer}
@@ -131,7 +131,7 @@ function set(){return`<h1>Settings</h1><div class="card"><b>Theme</b><div class=
 <div class="card"><b>Progress</b><p class="mu">Saved on this device only.</p><button class="btn g" onclick="reset()">Reset progress</button></div>`}
 function render(){document.documentElement.dataset.theme=S.theme;const app=$("#app");
 if(!READY){app.innerHTML=ERR?`<h1>Could not load questions</h1><p class="mu">Please restart the app.</p>`:`<h1>Loading…</h1><p class="mu">Preparing 30,000 questions.</p>`;return}
-app.innerHTML={home,prac,test,lib,pdf:pdfv,set}[S.v]();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===(S.v==="pdf"?"lib":S.v)));window.scrollTo&&window.scrollTo(0,0);if(S.v==="pdf"&&doc){const l=$("#pl");if(l)l.remove();draw()}}
+app.innerHTML={home,prac,test,lib,pdf:pdfv,set}[S.v]();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===(S.v==="pdf"?"lib":S.v)));try{const B=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.SystemBars;if(B)B.setStyle({style:S.theme==="dark"?"DARK":"LIGHT"})}catch(e){}window.scrollTo&&window.scrollTo(0,0);if(S.v==="pdf"&&doc){const l=$("#pl");if(l)l.remove();draw()}}
 try{const A=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;if(A)A.addListener("backButton",()=>{if(S.v==="pdf")closePdf();else if(S.v!=="home")go("home");else A.exitApp()})}catch(e){}
 render();load();
 </script></body></html>
