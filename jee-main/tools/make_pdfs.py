@@ -35,7 +35,7 @@ def one(ename, subject, slug, vol, data, start):
         c.drawRightString(A5[0]-12*mm, 8*mm, str(d.page)); c.restoreState()
     doc = BaseDocTemplate(os.path.join(out_dir, name), pagesize=A5, leftMargin=12*mm, rightMargin=12*mm, topMargin=12*mm, bottomMargin=14*mm, title=label, author="JEE Prep Studio")
     doc.addPageTemplates([PageTemplate(id="p", frames=[Frame(12*mm, 14*mm, A5[0]-24*mm, A5[1]-26*mm, id="f", leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)], onPage=deco)])
-    st = [Paragraph(escape(label), title), Paragraph("Questions with answers and step-by-step solutions. Practice material generated from templates; not official papers and not affiliated with NTA or any IIT.", base)]
+    st = [Paragraph(escape(label), title), Paragraph("Questions with answers and step-by-step solutions. Practice material for exam preparation; not official papers and not affiliated with NTA or any IIT.", base)]
     last = -1
     for i, (q, o, ai, e, t) in enumerate(data["q"]):
         if t != last:
