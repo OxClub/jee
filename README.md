@@ -18,6 +18,9 @@ timed tests, instant solutions, study music, dark/light mode, and 30 solution PD
 - Add a privacy policy and fill in Play Console's data safety form.
 - Keep the "not affiliated with NTA or any IIT" note.
 
+## Saving PDFs
+In the PDF viewer, **Save / Share PDF to phone** opens Android's share sheet. Choose Files, Drive, WhatsApp or any PDF reader to keep a copy.
+
 ## Regenerate the content
 - `node tools/gen.js` rebuilds `www/data/*.json` (10,000 unique questions per subject).
 - `python3 tools/make_pdfs.py` rebuilds `www/pdfs/*.pdf` (needs `pip install reportlab` and the DejaVu fonts).

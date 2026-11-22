@@ -83,7 +83,7 @@ const clk=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
 function ans(k){S.t.ans[S.t.i]=k;render()}
 function mv(d){S.t.i+=d;render()}
 function finish(){const t=S.t;if(t.done)return;t.done=true;clearInterval(timer);let ok=0,wr=0;t.qs.forEach((q,i)=>{if(t.ans[i]!=null){q.o[t.ans[i]]===q.a?ok++:wr++}});t.ok=ok;t.wr=wr;t.sc=ok*4-wr;S.st.n++;S.st.ok+=ok;S.st.att+=ok+wr;S.st.best=Math.max(S.st.best,t.sc);save();render()}
-function setTheme(t){S.theme=t;save();render()}
+function setTheme(t){S.theme=t;save();document.documentElement.dataset.theme=t;if(S.v!=="pdf")render()}
 function vol(v){S.vol=v/100;if(master)master.gain.value=S.vol*.6;save()}
 function reset(){if(confirm("Reset all progress?")){S.st={n:0,ok:0,att:0,best:0};save();render()}}
 let doc=null,busy=false,again=false;
@@ -94,6 +94,9 @@ c.width=v.width;c.height=v.height;c.style.width=v.width/dpr+"px";await page.rend
 function pgGo(d){const p=S.pdf;p.pg=Math.min(p.n,Math.max(1,p.pg+d));draw();const w=$("#pw");if(w)w.scrollTop=0}
 function zoom(d){S.pdf.z=Math.min(3,Math.max(.6,S.pdf.z+d));draw()}
 function jump(){const v=+$("#pj").value;if(v>=1&&v<=S.pdf.n){S.pdf.pg=v;draw()}else toast("Enter a page from 1 to "+S.pdf.n)}
+async function dlPdf(f,t){const C=window.Capacitor&&window.Capacitor.Plugins;if(!C||!C.Filesystem||!C.Share){toast("Saving works in the installed Android app.");return}
+try{toast("Preparing PDF…");const u=new Uint8Array(await (await fetch(f)).arrayBuffer());let bin="";for(let i=0;i<u.length;i+=32768)bin+=String.fromCharCode.apply(null,u.subarray(i,i+32768));
+const w=await C.Filesystem.writeFile({path:f.split("/").pop(),data:btoa(bin),directory:"CACHE"});await C.Share.share({title:t,url:w.uri,dialogTitle:"Save or share this PDF"})}catch(e){toast("Could not save the PDF.")}}
 function closePdf(){doc=null;S.pdf=null;go("lib")}
 const chips=(k,a)=>a.map(x=>`<button class="chip ${S.sel[k]===x?"on":""}" onclick="pick('${k}',${typeof x==="number"?x:"'"+x+"'"})">${x}</button>`).join(" ");
 function home(){const a=S.st.att?Math.round(100*S.st.ok/S.st.att)+"%":"–";
@@ -117,18 +120,18 @@ const q=t.qs[t.i],n=t.qs.length,last=t.i===n-1;
 return`<div class="top"><span class="mu">${q.s} · Q${t.i+1} of ${n}</span><b id="tm">${clk(t.left)}</b></div><div class="bar"><i style="width:${(t.i+1)/n*100}%"></i></div>
 <div class="card"><div class="q">${q.q}</div>${q.o.map((o,k)=>`<button class="opt ${t.ans[t.i]===k?"on":""}" onclick="ans(${k})">${AB[k]}. ${o}</button>`).join("")}</div>
 <div class="row"><button class="btn g" ${t.i?"":"disabled"} onclick="mv(-1)">Previous</button>${last?`<button class="btn" onclick="finish()">Submit</button>`:`<button class="btn" onclick="mv(1)">Next</button>`}</div>`}
-function lib(){return`<h1>Solution PDFs</h1><p class="mu">Each volume has 1,000 questions with answers and full solutions. Opens inside the app and works offline.</p>`+SUBS.map(s=>`<h3>${s}</h3><div class="row" style="gap:8px">${(MAN[s]||[]).map((v,i)=>`<button class="chip" style="flex:1 1 30%;min-height:54px;border-radius:14px" onclick="openPdf('pdfs/${v.file}','${v.label}')">Vol ${i+1}<br><small class="mu">${v.label.split("Questions ")[1]}</small></button>`).join("")}</div>`).join("")}
+function lib(){return`<h1>Solution PDFs</h1><p class="mu">Each volume has 1,000 questions with answers and full solutions. Open a volume to read it, then tap Save / Share PDF to keep a copy on your phone.</p>`+SUBS.map(s=>`<h3>${s}</h3><div class="row" style="gap:8px">${(MAN[s]||[]).map((v,i)=>`<button class="chip" style="flex:1 1 30%;min-height:54px;border-radius:14px" onclick="openPdf('pdfs/${v.file}','${v.label}')">Vol ${i+1}<br><small class="mu">${v.label.split("Questions ")[1]}</small></button>`).join("")}</div>`).join("")}
 function pdfv(){const p=S.pdf;return`<div class="top"><button class="chip" onclick="closePdf()">‹ Back</button><span class="mu" style="text-align:right">${p.t}</span></div>
 <div class="card" id="pw" style="padding:6px;overflow:auto;max-height:68vh;text-align:center"><canvas id="pc"></canvas><div id="pl" class="mu">Loading…</div></div>
 <div class="row"><button class="btn g" onclick="pgGo(-1)">Prev</button><button class="btn g" id="pn" style="flex:2" disabled>–</button><button class="btn g" onclick="pgGo(1)">Next</button></div>
 <div class="row" style="margin-top:8px"><button class="btn g" onclick="zoom(-.25)">Zoom out</button><button class="btn g" onclick="zoom(.25)">Zoom in</button></div>
-<div class="row" style="margin-top:8px"><input id="pj" type="number" min="1" placeholder="Page number" style="flex:2;border:1px solid var(--ln);border-radius:12px;background:transparent;color:var(--tx);padding:0 12px;font:inherit;min-height:46px"><button class="btn" onclick="jump()">Go to page</button></div>`}
+<button class="btn w" style="margin-top:8px" onclick="dlPdf(S.pdf.f,S.pdf.t)">Save / Share PDF to phone</button><div class="row" style="margin-top:8px"><input id="pj" type="number" min="1" placeholder="Page number" style="flex:2;border:1px solid var(--ln);border-radius:12px;background:transparent;color:var(--tx);padding:0 12px;font:inherit;min-height:46px"><button class="btn" onclick="jump()">Go to page</button></div>`}
 function set(){return`<h1>Settings</h1><div class="card"><b>Theme</b><div class="row" style="margin-top:10px"><button class="chip ${S.theme==="dark"?"on":""}" onclick="setTheme('dark')">Dark</button><button class="chip ${S.theme==="light"?"on":""}" onclick="setTheme('light')">Light</button></div></div>
 <div class="card"><b>Study music</b><p class="mu">Soft ambient tones made on your device.</p><button class="btn ${S.music?"":"g"} w" onclick="music(!S.music);render()">${S.music?"Music on · tap to stop":"Play study music"}</button><p class="mu" style="margin:12px 0 4px">Volume</p><input type="range" min="0" max="100" value="${Math.round(S.vol*100)}" oninput="vol(this.value)"></div>
 <div class="card"><b>Progress</b><p class="mu">Saved on this device only.</p><button class="btn g" onclick="reset()">Reset progress</button></div>`}
 function render(){document.documentElement.dataset.theme=S.theme;const app=$("#app");
 if(!READY){app.innerHTML=ERR?`<h1>Could not load questions</h1><p class="mu">Please restart the app.</p>`:`<h1>Loading…</h1><p class="mu">Preparing 30,000 questions.</p>`;return}
-app.innerHTML={home,prac,test,lib,pdf:pdfv,set}[S.v]();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===(S.v==="pdf"?"lib":S.v)));window.scrollTo&&window.scrollTo(0,0)}
+app.innerHTML={home,prac,test,lib,pdf:pdfv,set}[S.v]();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===(S.v==="pdf"?"lib":S.v)));window.scrollTo&&window.scrollTo(0,0);if(S.v==="pdf"&&doc){const l=$("#pl");if(l)l.remove();draw()}}
 try{const A=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;if(A)A.addListener("backButton",()=>{if(S.v==="pdf")closePdf();else if(S.v!=="home")go("home");else A.exitApp()})}catch(e){}
 render();load();
 </script></body></html>
